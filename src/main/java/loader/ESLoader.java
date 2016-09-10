@@ -6,6 +6,7 @@ import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import util.AppConfig;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -20,9 +21,9 @@ public class ESLoader {
 
     public void startup() throws UnknownHostException {
         Settings settings = Settings.settingsBuilder()
-                .put("cluster.name", "samujjal_elastic_dev").build();
+                .put("cluster.name", AppConfig.getProperty("es.cluster.name")).build();
         client = TransportClient.builder().settings(settings).build()
-                .addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("127.0.0.1"), 9300));
+                .addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(AppConfig.getProperty("es.host.ip")), 9300));
 
     }
 

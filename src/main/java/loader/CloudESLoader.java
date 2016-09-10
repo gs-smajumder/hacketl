@@ -41,7 +41,7 @@ public class CloudESLoader {
                 .addPlugin(ShieldPlugin.class)
                 .settings(settings)
                 .build()
-                .addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(hostname), 9243));
+                .addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(hostname), 9343));
     }
 
     public void insertDocument(String json, String indexName, String indexType){
